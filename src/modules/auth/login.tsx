@@ -54,9 +54,11 @@ const base = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     ${MQ.mobile} {
         height: 60%;
+        top: 100px;
     }
 `
 const loginForm = css`
@@ -71,7 +73,7 @@ const loginForm = css`
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
 
     ${MQ.mobile} {
-        width: 100%;
+        width: 90%;
         padding: 10% 0 9% 0;
     }
 `

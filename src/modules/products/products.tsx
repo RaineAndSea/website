@@ -22,8 +22,11 @@ const container = css`
         max-height: 70%;
     }
     ${MQ.mobile} {
+        padding: 5% 0;
+        padding-bottom: 300px;
         top: 20%;
-        width: 90%;
+        width: 100%;
+        justify-content: center;
         row-gap: 15px;
     }
 `
@@ -41,7 +44,6 @@ export const Products = () => {
 
     return(
         <div className={container}>
-                {products?.map(prod => <ProductCard product={prod} />)}
                 {products?.map(prod => <ProductCard product={prod} />)}
         </div>
     )

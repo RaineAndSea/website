@@ -28,6 +28,7 @@ const base = css`
 const registerForm = css`
     border-radius: 12px;
     width: 30%;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,8 +38,9 @@ const registerForm = css`
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
 
     ${MQ.mobile} {
-        width: 100%;
+        width: 90%;
         padding: 10% 0 9% 0;
+        top: 130px;
     }
 `
 

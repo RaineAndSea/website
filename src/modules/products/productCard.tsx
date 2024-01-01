@@ -1,6 +1,7 @@
 import { css } from "@emotion/css";
 import { FC } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import cartIcon from '../../static/icons8-cart-24.png';
 import { Product, addToCart } from "../../util/cookies/cart-cookies";
 import { depth } from "../../util/depth";
@@ -39,6 +40,10 @@ const base = css`
             font-size: 0.9em;
             overflow-x: scroll;
             max-width: 100%;
+
+            &:active {
+                text-decoration: underline;
+            }
         }
 
         section {
@@ -49,6 +54,7 @@ const base = css`
 
             .price {
                 font-weight: bold;
+                color: #319c4c;
             }
         }
 
@@ -88,11 +94,13 @@ const addToCartWithConfirmation = (id: string) => {
     addToCart(id);
 }
 export const ProductCard: FC<{product: Product}> = ({product}) => {
+    const navigate = useNavigate();
+
     return(
         <div className={base}>
             <section className="img" style={{backgroundImage: `url(${product.imgUrl})`}} />
             <section className="details">
-                <p className="title">{truncateText(product.title, 80)}</p>
+                <p className="title" onClick={() => navigate(`/products/${product._id}`)}>{truncateText(product.title, 80)}</p>
                 <section>
                     <p className="price">${formatToUSD(product.price)}</p>
                     <section className={`${regLoginSubmitButton} addToCartButton`} onClick={() => addToCartWithConfirmation(product._id)}>

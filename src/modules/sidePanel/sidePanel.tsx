@@ -51,7 +51,7 @@ export const SidePanel: FC<{closeSidePanel: () => void, sidePanelToggleButton: R
     }, [panelRef, sidePanelToggleButton, closeSidePanel])
     return(
         <div className={sidePanel} ref={panelRef}>
-            <SidePanelOptionsList />
+            <SidePanelOptionsList closeSidePanel={closeSidePanel} />
         </div>
     )
 }

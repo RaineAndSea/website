@@ -3,8 +3,8 @@ import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Authentication } from './modules/auth/authentication';
 import { Checkout } from './modules/checkout/checkout';
+import { NotFoundErrorFallback } from './modules/error/notFoundErrorFallback';
 import { Header } from './modules/header/header';
-import { Home } from './modules/home/home';
 import { Products } from './modules/products/products';
 import { Notifications } from './modules/toast/toast';
 
@@ -17,7 +17,7 @@ function App() {
       <HashRouter>
         <Header />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='*' element={<NotFoundErrorFallback />} />
           <Route path='/products' element={<Products />} />
           <Route path='/auth' element={<Authentication />} />
           <Route path='/checkout' element={<Checkout />} />

@@ -1,4 +1,5 @@
 import { css } from "@emotion/css"
+import { FC } from "react"
 import { useNavigate } from "react-router-dom"
 import cartIcon from '../../static/icons8-cart-24.png'
 import listIcon from '../../static/icons8-list-24.png'
@@ -54,6 +55,11 @@ const base = css`
             border-bottom: 1px solid transparent;
         }
     }
+
+    ${MQ.mobile} {
+        margin-top: 150%;
+        min-height: 20%;
+    }
 `
 
 const numberIndicator = css`
@@ -88,43 +94,60 @@ const sidePanelUserOption = css`
     }
 `
 
-export const SidePanelOptionsList = () => {
+export const SidePanelOptionsList: FC<{closeSidePanel: () => void}> = ({closeSidePanel}) => {
     const user = decodeUser();
     const navigate = useNavigate();
+
+    const navigateAndClose = (href: string) => {
+        navigate(href);
+        closeSidePanel();
+    }
 
     return(
          <div className={base}>
             {options.map(({label, icon}, key) => (
-                <section key={key} className="side-panel-option-selectable" id={`side-panel-option_${label.replace(/ /g, '-').toLowerCase()}`}>
+                <section 
+                key={key} 
+                className="side-panel-option-selectable" 
+                id={`side-panel-option_${label.replace(/ /g, '-').toLowerCase()}`} 
+                onClick={() => navigateAndClose(`${label.replace(/ /g, '-').toLowerCase()}`)}>
                     <p>{label}</p>
                     {icon && <img width={'14px'} style={{position: 'relative', top: '1px', paddingRight: '5px'}} alt="arrow" src={icon} />}
                 </section>
             ))}
-            {user ? (
-                <>
-                    <section style={{marginTop: '20px'}}>
-                        <p>Hi, {user.firstName}</p>
-                    </section> 
-                    <section className={`${sidePanelUserOption} side-panel-option-selectable`} onClick={() => navigate('/checkout')}>
-                        <p className="label">Checkout</p>
-                        <img width={'16px'} style={{position: 'relative', top: '1px', left: '10px' }} alt="arrow" src={cartIcon} />
-                        <div className={`${numberIndicator} ${getCartSize() > 9 ? numberIndicatorRectangle : numberIndicatorCircle}`}>
-                            <p>{getCartSize()}</p>
-                        </div>
-                    </section>
-                    <section className={`${sidePanelUserOption} side-panel-option-selectable`}>
-                        <p className="label">Wishlist</p>
-                        <img width={'16px'} style={{position: 'relative', top: '1px', left: '10px' }} alt="arrow" src={listIcon} />
-                    </section> 
-                    <section className={`${sidePanelUserOption} side-panel-option-selectable`} onClick={() => {
-                        logout();
-                        window.location.replace('/auth')
-                    }}>
-                        <p className="label">Logout</p>
-                        <img width={'16px'} style={{position: 'relative', top: '1px', left: '10px' }} alt="arrow" src={logoutIcon} />
-                    </section> 
-                </>
-            ) : <></>}
+            <section style={{marginTop: '20px'}}>
+                {user && <p>Hi, {user.firstName}</p>}
+            </section> 
+            {!user && (
+                <section 
+                className={`${sidePanelUserOption} side-panel-option-selectable`} 
+                onClick={() => navigateAndClose('/auth')}>
+                    <p className="label">Login</p>
+                    <img width={'16px'} style={{position: 'relative', top: '1px', left: '10px' }} alt="arrow" src={logoutIcon} />
+                </section> 
+            )}
+            <section className={`${sidePanelUserOption} side-panel-option-selectable`} onClick={() => navigateAndClose('/checkout')}>
+                <p className="label">Checkout</p>
+                <img width={'16px'} style={{position: 'relative', top: '1px', left: '10px' }} alt="arrow" src={cartIcon} />
+                <div className={`${numberIndicator} ${getCartSize() > 9 ? numberIndicatorRectangle : numberIndicatorCircle}`}>
+                    <p>{getCartSize()}</p>
+                </div>
+            </section>
+            {user && (
+                <section className={`${sidePanelUserOption} side-panel-option-selectable`}>
+                    <p className="label">Wishlist</p>
+                    <img width={'16px'} style={{position: 'relative', top: '1px', left: '10px' }} alt="arrow" src={listIcon} />
+                </section> 
+            )}
+            {user && (
+                <section className={`${sidePanelUserOption} side-panel-option-selectable`} onClick={() => {
+                    logout();
+                    window.location.replace('/auth')
+                }}>
+                    <p className="label">Logout</p>
+                    <img width={'16px'} style={{position: 'relative', top: '1px', left: '10px' }} alt="arrow" src={logoutIcon} />
+                </section> 
+            )}
         </div>
     )
 }
