@@ -1,5 +1,5 @@
 import { Toaster } from 'react-hot-toast';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Authentication } from './modules/auth/authentication';
 import { Checkout } from './modules/checkout/checkout';
@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <Toaster />
       <Notifications />
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
@@ -22,7 +22,7 @@ function App() {
           <Route path='/auth' element={<Authentication />} />
           <Route path='/checkout' element={<Checkout />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
