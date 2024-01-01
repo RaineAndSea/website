@@ -6,6 +6,7 @@ import { Form, Formik } from "formik";
 import { FC, useState } from "react";
 import toast from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
+import { BASE_QUERY } from "../../App";
 import { setCookie } from "../../util/cookies/cookies";
 import { MQ } from "../../util/mediaQueries";
 import TextInput from "./Input";
@@ -96,7 +97,7 @@ export const Login: FC<{isRegistering: boolean, setIsRegistering: (isRegistering
         
         const { email, password } = vals;
 
-        const promise = axios.post('http://10.0.0.201:5050/users/login', {
+        const promise = axios.post(`${BASE_QUERY}/users/login`, {
             email, password
         });
 
