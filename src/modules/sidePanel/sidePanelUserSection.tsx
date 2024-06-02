@@ -24,7 +24,7 @@ export const UserSection: React.FC<UserSectionProps> = ({ user, navigate }) => {
                 <p className={regLoginHyperlink} style={{ fontSize: 'inherit', fontWeight: 'inherit' }}>
                     Hi, {user.firstName}
                     {user.firstName === 'stranger' && (
-                        <span onClick={() => window.location.replace(APP_BASE_QUERY + '/auth')}>
+                        <span onClick={() => navigate(APP_BASE_QUERY + '/auth')}>
                             ..
                             <span className='decorated' style={{ marginLeft: '1rem' }}>
                                 let's fix that
