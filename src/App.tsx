@@ -11,6 +11,7 @@ import { Notifications } from './modules/toast/toast';
 export const BASE_QUERY = 'https://raine-server.vercel.app';
 export const APP_BASE_QUERY = '/website';
 function App() {
+    document.title = 'Raine & Sea';
     return (
         <div className='App'>
             <Toaster />
