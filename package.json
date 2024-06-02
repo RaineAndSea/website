@@ -32,8 +32,11 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json|tsx|jsx)\""
+        "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json|tsx|jsx)\"",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
+    "homepage": "https://RaineAndSea.github.io/website",
     "eslintConfig": {
         "extends": [
             "react-app",
@@ -53,6 +56,7 @@
         ]
     },
     "devDependencies": {
-        "@types/react-scroll": "^1.8.10"
+        "@types/react-scroll": "^1.8.10",
+        "gh-pages": "^5.0.0"
     }
 }
