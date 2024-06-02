@@ -1,5 +1,6 @@
 import { css } from '@emotion/css';
 import React from 'react';
+import { APP_BASE_QUERY } from '../../App';
 import cartIcon from '../../static/icons8-cart-24.png';
 import listIcon from '../../static/icons8-list-24.png';
 import logoutIcon from '../../static/icons8-logout-24.png';
@@ -34,7 +35,7 @@ export const UserSection: React.FC<UserSectionProps> = ({ user, navigate }) => {
             </section>
             <section
                 className={`${sidePanelUserOption} side-panel-option-selectable`}
-                onClick={() => navigate('/checkout')}>
+                onClick={() => navigate(APP_BASE_QUERY + '/checkout')}>
                 <p className='label'>Checkout</p>
                 <img width={'16px'} alt='arrow' src={cartIcon} />
                 <div

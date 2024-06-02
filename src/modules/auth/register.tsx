@@ -6,7 +6,7 @@ import { Form, Formik } from 'formik';
 import { FC, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { BASE_QUERY } from '../../App';
+import { APP_BASE_QUERY, BASE_QUERY } from '../../App';
 import { setCookie } from '../../util/cookies/cookies';
 import { MQ } from '../../util/mediaQueries';
 import TextInput from './Input';
@@ -71,7 +71,7 @@ export const Register: FC<{ isRegistering: boolean; setIsRegistering: (isRegiste
             .promise(promise, { ...authToastMessages, success: 'Registration successful' })
             .then(res => {
                 setCookie('logged-user', JSON.stringify(res.data.user));
-                navigate('/');
+                navigate(APP_BASE_QUERY + '/');
             })
             .catch(err => {
                 if (err.response && err.response.data) {

@@ -36,7 +36,7 @@
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build"
     },
-    "homepage": "https://RaineAndSea.github.io/website",
+    "homepage": "https://raineandsea.github.io/website/",
     "eslintConfig": {
         "extends": [
             "react-app",
