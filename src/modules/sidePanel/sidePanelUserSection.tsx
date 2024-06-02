@@ -24,7 +24,7 @@ export const UserSection: React.FC<UserSectionProps> = ({ user, navigate }) => {
                 <p className={regLoginHyperlink} style={{ fontSize: 'inherit', fontWeight: 'inherit' }}>
                     Hi, {user.firstName}
                     {user.firstName === 'stranger' && (
-                        <span onClick={() => window.location.replace('/auth')}>
+                        <span onClick={() => window.location.replace(APP_BASE_QUERY + '/auth')}>
                             ..
                             <span className='decorated' style={{ marginLeft: '1rem' }}>
                                 let's fix that
@@ -54,7 +54,7 @@ export const UserSection: React.FC<UserSectionProps> = ({ user, navigate }) => {
                     className={`${sidePanelUserOption} side-panel-option-selectable`}
                     onClick={() => {
                         logout();
-                        window.location.replace('/auth');
+                        window.location.replace(APP_BASE_QUERY + '/auth');
                     }}>
                     <p className='label'>Logout</p>
                     <img width={'16px'} alt='arrow' src={logoutIcon} />
