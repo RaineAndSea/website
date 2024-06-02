@@ -8,7 +8,7 @@ import { Home } from './modules/home/home';
 import { Products } from './modules/products/products';
 import { Notifications } from './modules/toast/toast';
 
-export const BASE_QUERY = 'http://192.168.0.15:5050';
+export const BASE_QUERY = 'raine-server.vercel.app';
 function App() {
     return (
         <div className='App'>
