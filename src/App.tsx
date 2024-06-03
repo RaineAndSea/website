@@ -9,8 +9,8 @@ import { ProductDetails } from './modules/productDetails/productDetails';
 import { Products } from './modules/products/products';
 import { Notifications } from './modules/toast/toast';
 
-// export const BASE_QUERY = 'https://raine-server.vercel.app';
-export const BASE_QUERY = 'http://localhost:5050';
+export const BASE_QUERY = 'https://raine-server.vercel.app';
+// export const BASE_QUERY = 'http://localhost:5050';
 function App() {
     document.title = 'Raine & Sea';
     return (
