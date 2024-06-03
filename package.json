@@ -35,7 +35,7 @@
         "eject": "react-scripts eject",
         "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json|tsx|jsx)\""
     },
-    "homepage": "https://raineandsea.github.io/website/",
+    "homepage": "https://website-six-lake-13.vercel.app/",
     "eslintConfig": {
         "extends": [
             "react-app",

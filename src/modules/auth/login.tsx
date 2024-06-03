@@ -6,7 +6,7 @@ import { Form, Formik } from 'formik';
 import { FC, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { APP_BASE_QUERY, BASE_QUERY } from '../../App';
+import { BASE_QUERY } from '../../App';
 import { setCookie } from '../../util/cookies/cookies';
 import { MQ } from '../../util/mediaQueries';
 import TextInput from './Input';
@@ -99,7 +99,7 @@ export const Login: FC<{ isRegistering: boolean; setIsRegistering: (isRegisterin
 }) => {
     const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
     const navigate = useNavigate();
-//comment
+    //comment
     const handleSubmit = (vals: LoginBody) => {
         const { email, password } = vals;
 
@@ -112,7 +112,7 @@ export const Login: FC<{ isRegistering: boolean; setIsRegistering: (isRegisterin
             .promise(promise, authToastMessages)
             .then(res => {
                 setCookie('logged-user', JSON.stringify(res.data.user));
-                navigate(APP_BASE_QUERY + '/');
+                navigate('/');
             })
             .catch(err => {
                 if (err.response && err.response.data) {

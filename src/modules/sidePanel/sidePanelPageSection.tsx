@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
-import { APP_BASE_QUERY, BASE_QUERY } from '../../App';
+import { BASE_QUERY } from '../../App';
 import arrowIcon from '../../static/icons8-right-arrow-50.png';
 import { formatURLItem } from './sidePanel-util';
 import { MenuItem } from './sidePanelMenuItem';
@@ -97,7 +97,7 @@ export const PageSection: FC<PageSectionProps> = ({ navigate }) => {
                         if (subMenu) {
                             setCurrentMenu(subMenu);
                         } else {
-                            navigate(`${APP_BASE_QUERY}/${activeMenu.hrefPrefix || ''}${formatURLItem(label).replace('home', '')}`);
+                            navigate(`${activeMenu.hrefPrefix || ''}${formatURLItem(label).replace('home', '')}`);
                         }
                     }}
                 />

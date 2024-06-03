@@ -1,6 +1,5 @@
 import { css } from '@emotion/css';
 import React from 'react';
-import { APP_BASE_QUERY } from '../../App';
 import cartIcon from '../../static/icons8-cart-24.png';
 import listIcon from '../../static/icons8-list-24.png';
 import logoutIcon from '../../static/icons8-logout-24.png';
@@ -24,7 +23,7 @@ export const UserSection: React.FC<UserSectionProps> = ({ user, navigate }) => {
                 <p className={regLoginHyperlink} style={{ fontSize: 'inherit', fontWeight: 'inherit' }}>
                     Hi, {user.firstName}
                     {user.firstName === 'stranger' && (
-                        <span onClick={() => navigate(APP_BASE_QUERY + '/auth')}>
+                        <span onClick={() => navigate('/auth')}>
                             ..
                             <span className='decorated' style={{ marginLeft: '1rem' }}>
                                 let's fix that
@@ -35,7 +34,7 @@ export const UserSection: React.FC<UserSectionProps> = ({ user, navigate }) => {
             </section>
             <section
                 className={`${sidePanelUserOption} side-panel-option-selectable`}
-                onClick={() => navigate(APP_BASE_QUERY + '/checkout')}>
+                onClick={() => navigate('/checkout')}>
                 <p className='label'>Checkout</p>
                 <img width={'16px'} alt='arrow' src={cartIcon} />
                 <div
@@ -54,7 +53,7 @@ export const UserSection: React.FC<UserSectionProps> = ({ user, navigate }) => {
                     className={`${sidePanelUserOption} side-panel-option-selectable`}
                     onClick={() => {
                         logout();
-                        navigate(APP_BASE_QUERY + '/auth');
+                        navigate('/auth');
                     }}>
                     <p className='label'>Logout</p>
                     <img width={'16px'} alt='arrow' src={logoutIcon} />
