@@ -5,10 +5,12 @@ import { Authentication } from './modules/auth/authentication';
 import { Checkout } from './modules/checkout/checkout';
 import { Header } from './modules/header/header';
 import { Home } from './modules/home/home';
+import { ProductDetails } from './modules/productDetails/productDetails';
 import { Products } from './modules/products/products';
 import { Notifications } from './modules/toast/toast';
 
-export const BASE_QUERY = 'https://raine-server.vercel.app';
+// export const BASE_QUERY = 'https://raine-server.vercel.app';
+export const BASE_QUERY = 'http://localhost:5050';
 function App() {
     document.title = 'Raine & Sea';
     return (
@@ -21,6 +23,7 @@ function App() {
                 <Routes>
                     <Route path={`/`} element={<Home />} />
                     <Route path={`/products/:productCategory`} element={<Products />} />
+                    <Route path='/product/:productId' element={<ProductDetails />} />
                     <Route path={`/all-products`} element={<Products />} />
                     <Route path={`/auth`} element={<Authentication />} />
                     <Route path={`/checkout`} element={<Checkout />} />

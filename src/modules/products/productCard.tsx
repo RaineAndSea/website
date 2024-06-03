@@ -1,6 +1,7 @@
 import { css } from '@emotion/css';
 import { FC } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import cartIcon from '../../static/icons8-cart-24.png';
 import { Product, addToCart } from '../../util/cookies/cart-cookies';
 import { depth } from '../../util/depth';
@@ -45,6 +46,11 @@ const base = css`
             font-size: 0.9em;
             overflow-x: scroll;
             max-width: 100%;
+
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
         }
 
         .subDetails {
@@ -114,11 +120,13 @@ const addToCartWithConfirmation = (id: string) => {
 };
 export const ProductCard: FC<{ product: Product }> = ({ product }) => {
     const mobile = window.innerWidth < 800;
+    const navigate = useNavigate();
+
     return (
         <div className={base}>
             <section className='img' style={{ backgroundImage: `url(${product.imgUrl})` }} />
             <section className='details'>
-                <p className='title'>{truncateText(product.title, mobile ? 70 : 80)}</p>
+                <p className='title' onClick={() => navigate(`/product/${product._id}`)}>{truncateText(product.title, mobile ? 70 : 80)}</p>
                 <section className='subDetails'>
                     <p className='price'>${formatToUSD(product.price)}</p>
                     <section

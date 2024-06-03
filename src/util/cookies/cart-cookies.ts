@@ -14,6 +14,12 @@ export interface Cart {
     products: { [key: string]: number };
 }
 
+export interface Variant {
+    name: string;
+    options: string[];
+    isGenericForCategory?: string;
+}
+
 const empty = {
     products: {}
 };
