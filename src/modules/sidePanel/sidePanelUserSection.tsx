@@ -54,7 +54,7 @@ export const UserSection: React.FC<UserSectionProps> = ({ user, navigate }) => {
                     className={`${sidePanelUserOption} side-panel-option-selectable`}
                     onClick={() => {
                         logout();
-                        window.location.replace(APP_BASE_QUERY + '/auth');
+                        navigate(APP_BASE_QUERY + '/auth');
                     }}>
                     <p className='label'>Logout</p>
                     <img width={'16px'} alt='arrow' src={logoutIcon} />
