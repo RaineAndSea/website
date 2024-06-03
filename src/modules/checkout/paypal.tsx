@@ -6,7 +6,7 @@ import { BASE_QUERY } from '../../App';
 import { decodeCart } from '../../util/cookies/cart-cookies';
 import { stateTaxRates } from './tax';
 
-export const PayPalButton: React.FC = () => {
+export const PayPalButton: React.FC<{PPCID: string | undefined}> = ({PPCID}) => {
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
@@ -16,13 +16,15 @@ export const PayPalButton: React.FC = () => {
         });
     }, []);
 
+    console.log({
+        PPCID
+    })
     const paypalOptions = {
-        clientId: String(process.env.PAYPAL_CLIENT_ID), // Replace with your PayPal client ID
+        clientId: String(PPCID), // Replace with your PayPal client ID
         currency: 'USD',
         intent: 'capture'
     };
 
-    console.log({ppcid: process.env.PAYPAL_CLIENT_ID})
     const calculateTax = (state: string) => {
         return stateTaxRates[state];
     };
