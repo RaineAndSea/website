@@ -66,7 +66,7 @@ export const Checkout = () => {
     console.log({
         env: process.env
     })
-    const { PAYPAL_CLIENT_ID } = process.env;
+    const { REACT_APP_PAYPAL_CLIENT_ID } = process.env;
     useEffect(() => {
         axios
             .post(`${BASE_QUERY}/products/cart-total`, { cart })
@@ -82,7 +82,7 @@ export const Checkout = () => {
                 ))}
             </div>
             <div className={paypalBox}>
-                <PayPalButton PPCID={PAYPAL_CLIENT_ID} />
+                <PayPalButton PPCID={REACT_APP_PAYPAL_CLIENT_ID} />
             </div>
         </div>
     );
