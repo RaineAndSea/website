@@ -22,6 +22,7 @@ export const PayPalButton: React.FC = () => {
         intent: 'capture'
     };
 
+    console.log({ppcid: process.env.PAYPAL_CLIENT_ID})
     const calculateTax = (state: string) => {
         return stateTaxRates[state];
     };
