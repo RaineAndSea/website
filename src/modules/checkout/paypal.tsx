@@ -16,9 +16,6 @@ export const PayPalButton: React.FC<{PPCID: string | undefined}> = ({PPCID}) => 
         });
     }, []);
 
-    console.log({
-        PPCID
-    })
     const paypalOptions = {
         clientId: String(PPCID), // Replace with your PayPal client ID
         currency: 'USD',
@@ -111,7 +108,7 @@ export const PayPalButton: React.FC<{PPCID: string | undefined}> = ({PPCID}) => 
                     width: '100%',
                     height: '100%',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
                 }}>
                 <div style={{ width: '80%' }}>
                     <PayPalButtons

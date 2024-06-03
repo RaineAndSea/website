@@ -5,7 +5,9 @@ import { BASE_QUERY } from '../../App';
 import { decodeCart } from '../../util/cookies/cart-cookies';
 import { depth } from '../../util/depth';
 import { MQ } from '../../util/mediaQueries';
-import { CheckoutCartItem } from './checkoutCartItem';
+import { CheckoutBox } from './checkoutBox';
+import { CheckoutSubtotal } from './checkoutSubtotal';
+import { EmptyCheckoutBox } from './emptyCheckoutBox';
 import { PayPalButton } from './paypal';
 
 const base = css`
@@ -18,6 +20,7 @@ const base = css`
     padding: 0 5%;
 
     ${MQ.mobile} {
+        margin-top: 20%;
         height: 100%;
         column-gap: 0;
         padding: 0;
@@ -28,16 +31,19 @@ const base = css`
 const checkoutBox = css`
     z-index: 0;
     box-shadow: ${depth[1]};
-    height: 80vh;
     background-color: white;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 70%;
+    max-height: 100%;
+    min-height: 60%;
     overflow-y: scroll;
 
     ${MQ.mobile} {
-        height: 30%;
+        min-height: 40%;
+        height: 40%;
         width: 90%;
         font-size: 0.7em;
     }
@@ -60,9 +66,9 @@ const paypalBox = css`
     }
 `;
 export const Checkout = () => {
-    const cart = decodeCart();
+    const [cart, setCart] = useState(decodeCart())
     const [total, setTotal] = useState<number>(0);
-
+    const mobile = window.innerWidth < 800;
     console.log({
         env: process.env
     })
@@ -74,13 +80,14 @@ export const Checkout = () => {
             .catch(err => console.log(err));
     }, [cart]);
 
+    const cartIsEmpty = Object.values(cart.products).length === 0 || Object.values(cart.products).every(val => val <= 0)
     return (
         <div className={base}>
             <div className={checkoutBox}>
-                {Object.keys(cart.products).map((id, key) => (
-                    <CheckoutCartItem key={key} productId={id} qty={cart.products[id as keyof object]} />
-                ))}
+               {!cartIsEmpty && <CheckoutBox cart={cart} cartUpdateFn={(cart) => setCart(cart)} />}
+               {cartIsEmpty && <EmptyCheckoutBox />}
             </div>
+            {mobile && <CheckoutSubtotal cart={cart} />}
             <div className={paypalBox}>
                 <PayPalButton PPCID={REACT_APP_PAYPAL_CLIENT_ID} />
             </div>
