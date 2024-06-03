@@ -26,13 +26,20 @@ const base = css`
         background-repeat: no-repeat;
         border-radius: 15px 15px 0 0;
         background-position-y: center;
+        ${MQ.mobile} {
+            height: 75%
+        }
     }
 
     .details {
         display: flex;
         flex-direction: column;
-        padding: 2% 5%;
         justify-content: center;
+        padding: 2% 5%;
+        ${MQ.mobile} {
+            padding: 0 5%;
+            font-size: .5rem;
+        }
 
         .title {
             font-size: 0.9em;
@@ -40,12 +47,11 @@ const base = css`
             max-width: 100%;
         }
 
-        section {
+        .subDetails {
             display: flex;
             justify-content: center;
             align-items: center;
             column-gap: 5%;
-
             .price {
                 font-weight: bold;
             }
@@ -55,9 +61,13 @@ const base = css`
             color: #0c7a5b;
             background-color: #ebfdf8;
             padding: 2.1%;
-            font-size: 0.8em;
-            width: max-content;
+            font-size: 0.8rem;
+            min-width: max-content;
             border: 1px solid #0c7a5b;
+
+            ${MQ.mobile} {
+                font-size: 0.4rem;
+            }
         }
 
         .addToCartButton {
@@ -65,6 +75,10 @@ const base = css`
             padding: 0px 15px;
             width: max-content;
             height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 5%;
 
             p {
                 min-width: max-content;
@@ -74,11 +88,23 @@ const base = css`
                 top: 1px;
                 margin-left: 5px;
             }
+
+            ${MQ.mobile} {
+                padding: 2 1%;
+                height: inherit;
+            }
+
+            
         }
     }
 
     ${MQ.mobile} {
-        width: 100%;
+        flex-grow: 0;
+        min-width: 150px;
+        max-width: 50%;
+        width: 47%;
+        height: 250px;
+        padding: .7%;
     }
 `;
 
@@ -87,12 +113,13 @@ const addToCartWithConfirmation = (id: string) => {
     addToCart(id);
 };
 export const ProductCard: FC<{ product: Product }> = ({ product }) => {
+    const mobile = window.innerWidth < 800;
     return (
         <div className={base}>
             <section className='img' style={{ backgroundImage: `url(${product.imgUrl})` }} />
             <section className='details'>
-                <p className='title'>{truncateText(product.title, 80)}</p>
-                <section>
+                <p className='title'>{truncateText(product.title, mobile ? 70 : 80)}</p>
+                <section className='subDetails'>
                     <p className='price'>${formatToUSD(product.price)}</p>
                     <section
                         className={`${regLoginSubmitButton} addToCartButton`}

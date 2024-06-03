@@ -117,6 +117,7 @@ const menu = css`
 // Mobile
 
 const dropdown = css`
+margin: auto;
     width: 80vw;
     position: relative;
     display: inline-block;

@@ -24,7 +24,7 @@ const container = css`
         max-height: 70%;
     }
     ${MQ.mobile} {
-        justify-content: center;
+        justify-content: flex-start;
         top: 20%;
         row-gap: 15px;
     }
