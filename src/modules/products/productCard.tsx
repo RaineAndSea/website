@@ -38,18 +38,23 @@ const base = css`
         justify-content: center;
         padding: 2% 5%;
         ${MQ.mobile} {
-            padding: 0 5%;
+            padding: 0 2%;
             font-size: 0.5rem;
         }
 
         .title {
-            font-size: 0.9em;
+            font-size: 1rem;
             overflow-x: scroll;
             max-width: 100%;
 
             &:hover {
                 cursor: pointer;
                 text-decoration: underline;
+            }
+
+            ${MQ.mobile} {
+                font-size: .55rem;
+                margin: .55rem 0 0 0;
             }
         }
 
@@ -125,7 +130,7 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
             <section className='img' style={{ backgroundImage: `url(${product.imgUrl})` }} />
             <section className='details'>
                 <p className='title' onClick={() => navigate(`/product/${product._id}`)}>
-                    {truncateText(product.title, mobile ? 70 : 80)}
+                    {truncateText(product.title, mobile ? 55 : 80)}
                 </p>
                 <section className='subDetails'>
                     <p className='price'>${formatToUSD(product.price)}</p>

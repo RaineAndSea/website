@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { Product, addToCart } from '../../..//util/cookies/cart-cookies';
 import cartIcon from '../../../static/icons8-cart-24.png';
 import { AddToCartButton, Price, PriceAndAddToCartWrapper } from '../../../static/styles/styles';
+import { regLoginSubmitButton } from '../../auth/login';
 import { CustomDropdown } from './customDropdown';
 
 interface PriceAndAddToCartButtonProps {
@@ -32,7 +33,7 @@ export const PriceAndAddToCartButton: FC<PriceAndAddToCartButtonProps> = ({
                 defaultValue={1}
                 onChange={setQuantity}
             />
-            <AddToCartButton onClick={handleAddToCartClick}>
+            <AddToCartButton onClick={handleAddToCartClick} className={regLoginSubmitButton}>
                 <p>Add to cart</p>
                 <img src={cartIcon} width={'12px'} />
             </AddToCartButton>

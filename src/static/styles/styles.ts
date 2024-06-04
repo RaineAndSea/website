@@ -1,15 +1,15 @@
 // styles.ts
-import { css } from '@emotion/css';
-import styled from '@emotion/styled';
-import { depth } from '../../util/depth';
-import { MQ } from '../../util/mediaQueries';
+import { css } from "@emotion/css";
+import styled from "@emotion/styled";
+import { depth } from "../../util/depth";
+import { MQ } from "../../util/mediaQueries";
 
 export const Title = styled.p`
-    margin: 0.5rem 0;
+    margin: .5rem 0;
     font-weight: bold;
 
     ${MQ.mobile} {
-        font-size: 0.8rem;
+        font-size: .8rem;
     }
 `;
 
@@ -22,7 +22,7 @@ export const PriceAndAddToCartWrapper = styled.section`
 
     ${MQ.mobile} {
         align-items: flex-start;
-        column-gap: 0.5rem;
+        column-gap: .5rem;
     }
 `;
 
@@ -40,7 +40,7 @@ export const AddToCartButton = styled.section`
 
     img {
         width: 1.1rem;
-        margin-left: 0.6rem;
+        margin-left: .6rem;
     }
 
     ${MQ.mobile} {
@@ -48,12 +48,12 @@ export const AddToCartButton = styled.section`
         width: max-content;
         flex-grow: 1;
         padding: 0 1rem;
-        font-size: 0.8rem;
+        font-size: .8rem;
     }
 `;
 
 export const Price = styled.p`
-    margin: 0.5rem 0;
+    margin: .5rem 0;
     font-weight: bold;
     font-size: 1.5rem;
 
@@ -72,17 +72,17 @@ export const TagsWrapper = styled.ul`
     flex-wrap: wrap;
 
     ${MQ.mobile} {
-        gap: 0.5rem;
+        gap: .5rem;
         padding: 1rem 0 0 0;
     }
 `;
 
 export const Tag = styled.li`
-    font-size: 0.8rem;
-    padding: 0.5rem;
+    font-size: .8rem;
+    padding: .5rem;
     border-radius: 10px;
     background-color: #f0f0f0;
-    flex-grow: 1;
+    flex-grow: 1; 
     text-align: center;
 
     ${MQ.mobile} {
@@ -103,6 +103,7 @@ export const AddToCartWrapper = styled.div`
     overflow-x: hidden;
 
     ${MQ.mobile} {
+        width: 100%;
         top: 2rem;
     }
 
@@ -143,7 +144,6 @@ export const dropdownHeader = css`
     cursor: pointer;
     background-color: #fff;
     padding: 0 0.5rem;
-    box-shadow: ${depth[1]};
 `;
 
 export const dropdownList = css`
@@ -155,7 +155,6 @@ export const dropdownList = css`
     border: 1px solid #ccc;
     border-radius: 5px;
     z-index: 1000;
-    box-shadow: ${depth[2]};
     max-height: 150px;
     overflow-y: auto;
     margin-top: 0.5rem;
@@ -189,7 +188,6 @@ export const DropdownHeader = styled.div`
     cursor: pointer;
     background-color: #fff;
     padding: 0 0.5rem;
-    box-shadow: ${depth[1]};
 `;
 
 export const OptionsContainer = styled.div`
