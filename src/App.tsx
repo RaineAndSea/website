@@ -5,7 +5,7 @@ import { Authentication } from './modules/auth/authentication';
 import { Checkout } from './modules/checkout/checkout';
 import { Header } from './modules/header/header';
 import { Home } from './modules/home/home';
-import { ProductDetails } from './modules/productDetails/productDetails';
+import { ProductDetails } from './modules/productDetails/addToCart/productDetails';
 import { Products } from './modules/products/products';
 import { Notifications } from './modules/toast/toast';
 

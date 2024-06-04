@@ -63,7 +63,7 @@ export const Products = () => {
     return (
         <div className={container}>
             <ProductsFilter products={productsByCategory} filterUpdateFn={val => setFilter(val)} filter={filter} />
-            {productsByFilter?.map(prod => <ProductCard product={prod} />)}
+            {productsByFilter?.map(prod => <ProductCard key={prod._id} product={prod} />)}
         </div>
     );
 };

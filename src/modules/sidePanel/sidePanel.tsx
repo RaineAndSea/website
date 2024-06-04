@@ -48,7 +48,7 @@ const sidePanel = css`
     position: absolute;
     display: flex;
     align-items: flex-start;
-    z-index: 1;
+    z-index: 5;
     left: -400px;
     animation: ${slideInAnimation} 300ms ease forwards;
     box-shadow:

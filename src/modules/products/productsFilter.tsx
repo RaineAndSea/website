@@ -66,9 +66,9 @@ const ProductsFilterMobile: FC<ProductsFilterProps> = ({ products, filterUpdateF
                         className={`${menuItem} ${filter === '' && activeItem}`}>
                         All Crystals
                     </button>
-                    {crystals.map(crystal => (
+                    {crystals.map((crystal, idx) => (
                         <button
-                            key={crystal}
+                            key={idx}
                             onClick={() => handleOptionClick(crystal)}
                             className={`${menuItem} ${filter === crystal && activeItem}`}>
                             {crystal}
@@ -86,9 +86,10 @@ const ProductsFilterDesktop: FC<ProductsFilterProps> = ({ products, filterUpdate
     return (
         <div className={base}>
             <div className={menu}>
-                {crystals.map(crystal => {
+                {crystals.map((crystal, idx) => {
                     return (
                         <ProductsFilterOption
+                            key={idx}
                             label={crystal}
                             isActive={filter === crystal}
                             onClick={val => filterUpdateFn(val === filter ? null : val)}
@@ -117,7 +118,7 @@ const menu = css`
 // Mobile
 
 const dropdown = css`
-margin: auto;
+    margin: auto;
     width: 80vw;
     position: relative;
     display: inline-block;

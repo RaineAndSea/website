@@ -66,12 +66,12 @@ const paypalBox = css`
     }
 `;
 export const Checkout = () => {
-    const [cart, setCart] = useState(decodeCart())
+    const [cart, setCart] = useState(decodeCart());
     const [total, setTotal] = useState<number>(0);
     const mobile = window.innerWidth < 800;
     console.log({
         env: process.env
-    })
+    });
     const { REACT_APP_PAYPAL_CLIENT_ID } = process.env;
     useEffect(() => {
         axios
@@ -80,12 +80,13 @@ export const Checkout = () => {
             .catch(err => console.log(err));
     }, [cart]);
 
-    const cartIsEmpty = Object.values(cart.products).length === 0 || Object.values(cart.products).every(val => val <= 0)
+    const cartIsEmpty =
+        Object.values(cart.products).length === 0 || Object.values(cart.products).every(val => val <= 0);
     return (
         <div className={base}>
             <div className={checkoutBox}>
-               {!cartIsEmpty && <CheckoutBox cart={cart} cartUpdateFn={(cart) => setCart(cart)} />}
-               {cartIsEmpty && <EmptyCheckoutBox />}
+                {!cartIsEmpty && <CheckoutBox cart={cart} cartUpdateFn={cart => setCart(cart)} />}
+                {cartIsEmpty && <EmptyCheckoutBox />}
             </div>
             {mobile && <CheckoutSubtotal cart={cart} />}
             <div className={paypalBox}>

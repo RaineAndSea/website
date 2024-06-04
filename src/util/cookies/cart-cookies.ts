@@ -1,5 +1,19 @@
 import { getCookie, setCookie } from './cookies';
 
+export interface Option {
+    _id: string;
+    name: string;
+    price: number | null;
+    isDefault: boolean;
+}
+
+export interface Variant {
+    _id: string;
+    name: string;
+    options: Option[];
+    isGenericForCategory: boolean;
+}
+
 export interface Product {
     _id: string;
     title: string;
@@ -9,15 +23,10 @@ export interface Product {
     type: string;
     category: string;
     crystals: string[];
+    variants: Variant[];
 }
 export interface Cart {
     products: { [key: string]: number };
-}
-
-export interface Variant {
-    name: string;
-    options: string[];
-    isGenericForCategory?: string;
 }
 
 const empty = {

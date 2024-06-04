@@ -31,7 +31,7 @@ const logo = css`
     width: auto;
     padding-left: 1%;
     position: relative;
-    z-index: 2;
+    z-index: 6;
 `;
 
 const toggleSidePanelButton = css`
@@ -43,7 +43,7 @@ const toggleSidePanelButton = css`
     align-items: center;
     row-gap: 15%;
     margin-left: 1.5%;
-    z-index: 2;
+    z-index: 6;
 
     .line {
         width: 70%;

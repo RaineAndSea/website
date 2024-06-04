@@ -28,7 +28,7 @@ const base = css`
         border-radius: 15px 15px 0 0;
         background-position-y: center;
         ${MQ.mobile} {
-            height: 75%
+            height: 75%;
         }
     }
 
@@ -39,7 +39,7 @@ const base = css`
         padding: 2% 5%;
         ${MQ.mobile} {
             padding: 0 5%;
-            font-size: .5rem;
+            font-size: 0.5rem;
         }
 
         .title {
@@ -99,8 +99,6 @@ const base = css`
                 padding: 2 1%;
                 height: inherit;
             }
-
-            
         }
     }
 
@@ -110,11 +108,11 @@ const base = css`
         max-width: 50%;
         width: 47%;
         height: 250px;
-        padding: .7%;
+        padding: 0.7%;
     }
 `;
 
-const addToCartWithConfirmation = (id: string) => {
+export const addToCartWithConfirmation = (id: string) => {
     toast.success('Item added to cart');
     addToCart(id);
 };
@@ -126,7 +124,9 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
         <div className={base}>
             <section className='img' style={{ backgroundImage: `url(${product.imgUrl})` }} />
             <section className='details'>
-                <p className='title' onClick={() => navigate(`/product/${product._id}`)}>{truncateText(product.title, mobile ? 70 : 80)}</p>
+                <p className='title' onClick={() => navigate(`/product/${product._id}`)}>
+                    {truncateText(product.title, mobile ? 70 : 80)}
+                </p>
                 <section className='subDetails'>
                     <p className='price'>${formatToUSD(product.price)}</p>
                     <section

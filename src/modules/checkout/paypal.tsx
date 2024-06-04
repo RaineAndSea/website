@@ -6,7 +6,7 @@ import { BASE_QUERY } from '../../App';
 import { decodeCart } from '../../util/cookies/cart-cookies';
 import { stateTaxRates } from './tax';
 
-export const PayPalButton: React.FC<{PPCID: string | undefined}> = ({PPCID}) => {
+export const PayPalButton: React.FC<{ PPCID: string | undefined }> = ({ PPCID }) => {
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
@@ -108,7 +108,7 @@ export const PayPalButton: React.FC<{PPCID: string | undefined}> = ({PPCID}) => 
                     width: '100%',
                     height: '100%',
                     alignItems: 'center',
-                    justifyContent: 'center',
+                    justifyContent: 'center'
                 }}>
                 <div style={{ width: '80%' }}>
                     <PayPalButtons
