@@ -165,7 +165,8 @@ export const error404Product: Product = {
     type: '',
     category: '',
     crystals: [],
-    variants: []
+    variants: [],
+    stock: 0
 };
 
 export const CheckoutCartItem: FC<{

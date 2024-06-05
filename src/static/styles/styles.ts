@@ -43,6 +43,11 @@ export const AddToCartButton = styled.section`
         margin-left: .6rem;
     }
 
+    &.disabled {
+        cursor: not-allowed;
+        filter: brightness(0.9);
+    }
+
     ${MQ.mobile} {
         height: 96%;
         width: max-content;
@@ -50,6 +55,15 @@ export const AddToCartButton = styled.section`
         padding: 0 1rem;
         font-size: .8rem;
     }
+`;
+
+export const Stock = styled.section`
+display: flex;
+font-size: .9rem;
+padding: 1rem 0 0 0;
+
+${MQ.mobile} {
+    padding: .5rem 0 0 0;
 `;
 
 export const Price = styled.p`

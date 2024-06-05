@@ -14,18 +14,18 @@ const base = css`
     width: 89.9%;
     height: 80%;
     display: flex;
+    align-items: flex-start;
     justify-content: center;
     column-gap: 5%;
-    align-items: center;
-    padding: 0 5%;
+    padding: 5% 5%;
 
     ${MQ.mobile} {
         margin-top: 20%;
-        height: 100%;
         column-gap: 0;
         padding: 0;
         width: 100%;
         flex-direction: column;
+        align-items: center;
     }
 `;
 const checkoutBox = css`
@@ -38,7 +38,7 @@ const checkoutBox = css`
     align-items: center;
     width: 70%;
     max-height: 100%;
-    min-height: 60%;
+    padding: 5% 0;
     overflow-y: scroll;
 
     ${MQ.mobile} {

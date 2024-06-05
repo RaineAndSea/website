@@ -23,6 +23,7 @@ export interface Product {
     type: string;
     category: string;
     crystals: string[];
+    stock: number;
     variants: Variant[];
 }
 export interface Cart {

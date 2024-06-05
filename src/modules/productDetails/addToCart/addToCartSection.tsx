@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
 import { BASE_QUERY } from '../../../App';
-import { AddToCartWrapper, PrimaryDetails } from '../../../static/styles/styles';
+import { AddToCartWrapper, PrimaryDetails, Stock } from '../../../static/styles/styles';
 import { Product, Variant } from '../../../util/cookies/cart-cookies';
 import { PriceAndAddToCartButton } from './priceAndAddToCartButton';
 import { ProductTitle } from './productTitle';
@@ -13,6 +13,17 @@ interface AddToCartSectionProps {
     product: Product;
 }
 
+const toStockString = (stock: number): [str: string, color: string] => {
+    if (stock === 0 || stock === undefined) {
+        return ['Sold out', '#b81f00'];
+    }
+
+    if (stock <= 5) {
+        return [`Act fast - only ${stock} left in stock!`, '#b87d00'];
+    }
+
+    return ['In stock', '#00b80c'];
+}
 export const AddToCartSection: FC<AddToCartSectionProps> = ({ product }) => {
     const [variants, setVariants] = useState<Variant[]>([]);
     const [variantValues, setVariantValues] = useState<{ [key: string]: string }>({});
@@ -43,10 +54,12 @@ export const AddToCartSection: FC<AddToCartSectionProps> = ({ product }) => {
         setPrice(newPrice);
     }, [product.price, variantValues, variants]);
 
+    const [stockString, stockStringColor] = toStockString(product.stock);
     return (
         <AddToCartWrapper>
             <PrimaryDetails>
                 <ProductTitle title={product.title} />
+                <Stock style={{color: stockStringColor}}>{stockString}</Stock>
                 <PriceAndAddToCartButton
                     product={product}
                     price={price}
@@ -55,12 +68,13 @@ export const AddToCartSection: FC<AddToCartSectionProps> = ({ product }) => {
                 />
                 <Tags tags={['Handmade to order', 'Genuine crystals', 'Free shipping', '30 day return policy']} />
             </PrimaryDetails>
-            <VariantsSection
+            {!!product.stock && <VariantsSection
                 product={product}
                 variants={variants}
                 onChange={setVariantValues}
                 variantValues={variantValues}
-            />
+            />}
         </AddToCartWrapper>
     );
 };
+

@@ -45,6 +45,7 @@ const sidePanel = css`
     top: 0px;
     width: 100%;
     height: 100vh;
+    overflow-y: scroll;
     position: absolute;
     display: flex;
     align-items: flex-start;

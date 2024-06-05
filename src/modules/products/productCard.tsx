@@ -27,8 +27,14 @@ const base = css`
         background-repeat: no-repeat;
         border-radius: 15px 15px 0 0;
         background-position-y: center;
+        transition: filter 0.3s;
         ${MQ.mobile} {
             height: 75%;
+        }
+
+        &:hover {
+            cursor: pointer;
+            filter: brightness(0.9);
         }
     }
 
@@ -46,10 +52,13 @@ const base = css`
             font-size: 1rem;
             overflow-x: scroll;
             max-width: 100%;
+            text-decoration: underline;
+            text-decoration-color: transparent;
+            transition: text-decoration-color 0.3s;
 
             &:hover {
                 cursor: pointer;
-                text-decoration: underline;
+                text-decoration-color: black;
             }
 
             ${MQ.mobile} {
@@ -126,20 +135,20 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
     const navigate = useNavigate();
 
     return (
-        <div className={base}>
-            <section className='img' style={{ backgroundImage: `url(${product.imgUrl})` }} />
+        <div className={base}  >
+            <section className='img' style={{ backgroundImage: `url(${product.imgUrl})` }} onClick={() => navigate(`/product/${product._id}`)} />
             <section className='details'>
                 <p className='title' onClick={() => navigate(`/product/${product._id}`)}>
                     {truncateText(product.title, mobile ? 55 : 80)}
                 </p>
                 <section className='subDetails'>
                     <p className='price'>${formatToUSD(product.price)}</p>
-                    <section
+                    {!mobile && <section
                         className={`${regLoginSubmitButton} addToCartButton`}
                         onClick={() => addToCartWithConfirmation(product._id)}>
                         <p>Add to cart</p>
                         <img src={cartIcon} width={'12px'} />
-                    </section>
+                    </section>}
                     <p className='freeShipping'>FREE shipping</p>
                 </section>
             </section>

@@ -25,7 +25,7 @@ const container = css`
     }
     ${MQ.mobile} {
         justify-content: flex-start;
-        top: 20%;
+        top: 10%;
         row-gap: 15px;
     }
 `;

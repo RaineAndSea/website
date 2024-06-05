@@ -28,15 +28,18 @@ export const PriceAndAddToCartButton: FC<PriceAndAddToCartButtonProps> = ({
     return (
         <PriceAndAddToCartWrapper>
             <Price>${price.toFixed(2)}</Price>
+            {!!product.stock && <>
             <CustomDropdown
-                options={Array.from({ length: 10 }, (_, i) => i + 1)}
+                options={Array.from({ length: product.stock }, (_, i) => i + 1)}
                 defaultValue={1}
                 onChange={setQuantity}
             />
-            <AddToCartButton onClick={handleAddToCartClick} className={regLoginSubmitButton}>
+            <AddToCartButton onClick={handleAddToCartClick} className={`${regLoginSubmitButton} ${!product.stock && 'disabled'}`}>
                 <p>Add to cart</p>
                 <img src={cartIcon} width={'12px'} />
             </AddToCartButton>
+            </>
+          }
         </PriceAndAddToCartWrapper>
     );
 };
