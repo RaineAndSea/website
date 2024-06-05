@@ -29,11 +29,10 @@ interface DecodedToken {
 }
 export const decodeToken = () => {
     const token = getCookie('csrfToken');
-    
+
     try {
         return jwtDecode(token) as DecodedToken;
     } catch {
         return {} as DecodedToken;
     }
-    
-}
+};

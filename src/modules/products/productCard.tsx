@@ -62,8 +62,8 @@ const base = css`
             }
 
             ${MQ.mobile} {
-                font-size: .55rem;
-                margin: .55rem 0 0 0;
+                font-size: 0.55rem;
+                margin: 0.55rem 0 0 0;
             }
         }
 
@@ -136,20 +136,26 @@ export const ProductCard: FC<{ product: Product }> = ({ product }) => {
     const navigate = useNavigate();
 
     return (
-        <div className={base}  >
-            <section className='img' style={{ backgroundImage: `url(${product.imgUrl})` }} onClick={() => navigate(`/product/${product._id}`)} />
+        <div className={base}>
+            <section
+                className='img'
+                style={{ backgroundImage: `url(${product.imgUrl})` }}
+                onClick={() => navigate(`/product/${product._id}`)}
+            />
             <section className='details'>
                 <p className='title' onClick={() => navigate(`/product/${product._id}`)}>
                     {truncateText(product.title, mobile ? 55 : 80)}
                 </p>
                 <section className='subDetails'>
                     <p className='price'>${formatToUSD(product.price)}</p>
-                    {!mobile && <section
-                        className={`${regLoginSubmitButton} addToCartButton`}
-                        onClick={() => addToCartWithConfirmation(product._id)}>
-                        <p>Add to cart</p>
-                        <img src={cartIcon} width={'12px'} />
-                    </section>}
+                    {!mobile && (
+                        <section
+                            className={`${regLoginSubmitButton} addToCartButton`}
+                            onClick={() => addToCartWithConfirmation(product._id)}>
+                            <p>Add to cart</p>
+                            <img src={cartIcon} width={'12px'} />
+                        </section>
+                    )}
                     <p className='freeShipping'>FREE shipping</p>
                 </section>
             </section>

@@ -37,5 +37,4 @@ const base = css`
     ${MQ.mobile} {
         height: unset;
     }
-
 `;

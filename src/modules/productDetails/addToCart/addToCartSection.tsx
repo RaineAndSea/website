@@ -23,7 +23,7 @@ const toStockString = (stock: number): [str: string, color: string] => {
     }
 
     return ['In stock', '#00b80c'];
-}
+};
 export const AddToCartSection: FC<AddToCartSectionProps> = ({ product }) => {
     const [variants, setVariants] = useState<Variant[]>([]);
     const [variantValues, setVariantValues] = useState<{ [key: string]: string }>({});
@@ -59,7 +59,7 @@ export const AddToCartSection: FC<AddToCartSectionProps> = ({ product }) => {
         <AddToCartWrapper>
             <PrimaryDetails>
                 <ProductTitle title={product.title} />
-                <Stock style={{color: stockStringColor}}>{stockString}</Stock>
+                <Stock style={{ color: stockStringColor }}>{stockString}</Stock>
                 <PriceAndAddToCartButton
                     product={product}
                     price={price}
@@ -68,13 +68,14 @@ export const AddToCartSection: FC<AddToCartSectionProps> = ({ product }) => {
                 />
                 <Tags tags={['Handmade to order', 'Genuine crystals', 'Free shipping', '30 day return policy']} />
             </PrimaryDetails>
-            {!!product.stock && <VariantsSection
-                product={product}
-                variants={variants}
-                onChange={setVariantValues}
-                variantValues={variantValues}
-            />}
+            {!!product.stock && (
+                <VariantsSection
+                    product={product}
+                    variants={variants}
+                    onChange={setVariantValues}
+                    variantValues={variantValues}
+                />
+            )}
         </AddToCartWrapper>
     );
 };
-

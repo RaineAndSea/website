@@ -10,7 +10,7 @@ export const Tags: FC<TagsProps> = ({ tags }) => {
     return (
         <TagsWrapper>
             {tags.map((tag, index) => (
-               <Tag key={index}>{tag}</Tag>
+                <Tag key={index}>{tag}</Tag>
             ))}
         </TagsWrapper>
     );

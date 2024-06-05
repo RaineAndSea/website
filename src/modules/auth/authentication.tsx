@@ -10,10 +10,10 @@ export const verifyCsrfToken = async () => {
     if (!csrfToken) {
         return false;
     }
-    
+
     try {
         const decoded = jwtDecode(csrfToken);
-        if(!decoded || !decoded.exp || decoded.exp * 1000 < Date.now()) {
+        if (!decoded || !decoded.exp || decoded.exp * 1000 < Date.now()) {
             return false;
         }
 
@@ -21,7 +21,7 @@ export const verifyCsrfToken = async () => {
     } catch (_error) {
         return false;
     }
-}
+};
 export const Authentication = () => {
     const navigate = useNavigate();
     const [isRegistering, setIsRegistering] = useState(false);
@@ -33,11 +33,10 @@ export const Authentication = () => {
             } else {
                 navigate('/');
             }
-        }
+        };
 
         validateToken();
-    }
-    , []);
+    }, []);
 
     return isRegistering ? (
         <Register isRegistering={isRegistering} setIsRegistering={setIsRegistering} />

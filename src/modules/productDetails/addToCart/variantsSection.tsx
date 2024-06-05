@@ -116,8 +116,8 @@ const variantsSection = css`
 
         .personalizationHint {
             margin: 0 0 0 0.5rem;
-            font-size: .9rem;
-            color: grey
+            font-size: 0.9rem;
+            color: grey;
         }
     }
 `;

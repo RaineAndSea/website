@@ -16,7 +16,7 @@ export const UserSection: React.FC<UserSectionProps> = ({ user, navigate }) => {
     if (!user) {
         user = { firstName: 'stranger' };
     }
-    
+
     return (
         <>
             <section style={{ marginTop: '20px', display: 'flex' }}>

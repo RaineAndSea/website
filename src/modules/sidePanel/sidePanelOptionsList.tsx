@@ -24,21 +24,22 @@ export const SidePanelOptionsList: React.FC<{ closeSidePanel: () => void }> = ({
     useEffect(() => {
         const decoded = decodeToken();
 
-        if(!decoded.email) {
+        if (!decoded.email) {
             removeCookie('csrfToken');
             setUser(undefined);
             return;
         }
 
-        secureAxios.get(`${BASE_QUERY}/users/email/${decoded.email}`)
-            .then((res) => {
-                console.log(res.data)
+        secureAxios
+            .get(`${BASE_QUERY}/users/email/${decoded.email}`)
+            .then(res => {
+                console.log(res.data);
                 setUser(res.data.user);
             })
-            .catch((err) => {
+            .catch(err => {
                 console.error(err);
             });
-    }, [])
+    }, []);
 
     return (
         <div className={base}>
