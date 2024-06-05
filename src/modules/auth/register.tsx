@@ -5,7 +5,6 @@ import axios from 'axios';
 import { Form, Formik } from 'formik';
 import { FC, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
 import { BASE_QUERY } from '../../App';
 import { setCookie } from '../../util/cookies/cookies';
 import { MQ } from '../../util/mediaQueries';
@@ -55,8 +54,6 @@ export const Register: FC<{ isRegistering: boolean; setIsRegistering: (isRegiste
     setIsRegistering
 }) => {
     const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
-    const navigate = useNavigate();
-
     const handleSubmit = (vals: RegisterBody) => {
         const { email, password, firstName, lastName } = vals;
 
@@ -70,8 +67,8 @@ export const Register: FC<{ isRegistering: boolean; setIsRegistering: (isRegiste
         toast
             .promise(promise, { ...authToastMessages, success: 'Registration successful' })
             .then(res => {
-                setCookie('logged-user', JSON.stringify(res.data.user));
-                navigate('/');
+                setCookie('csrfToken', res.data.token);
+                window.location.replace('/');
             })
             .catch(err => {
                 if (err.response && err.response.data) {

@@ -21,12 +21,15 @@ const container = css`
     overflow-y: scroll;
 
     ${MQ.laptop} {
-        max-height: 70%;
+        max-height: 70vh;
     }
+
     ${MQ.mobile} {
+\        column-gap: 1%;
+        row-gap: .5rem;
         justify-content: flex-start;
-        top: 10%;
-        row-gap: 15px;
+        margin-top: 8rem;
+        height: unset;
     }
 `;
 export const Products = () => {

@@ -119,6 +119,7 @@ export const AddToCartWrapper = styled.div`
     ${MQ.mobile} {
         width: 100%;
         top: 2rem;
+        padding-bottom: 10vh;
     }
 
     ${MQ.laptop} {

@@ -12,7 +12,7 @@ import { PayPalButton } from './paypal';
 
 const base = css`
     width: 89.9%;
-    height: 80%;
+    height: 80vh;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -20,7 +20,8 @@ const base = css`
     padding: 5% 5%;
 
     ${MQ.mobile} {
-        margin-top: 20%;
+        height: unset;
+        margin-top: 20vh;
         column-gap: 0;
         padding: 0;
         width: 100%;
@@ -37,14 +38,15 @@ const checkoutBox = css`
     flex-direction: column;
     align-items: center;
     width: 70%;
-    max-height: 100%;
-    padding: 5% 0;
+    height: 70%;
+    padding: 5% 0 0 0;
     overflow-y: scroll;
 
     ${MQ.mobile} {
         min-height: 40%;
-        height: 40%;
+        height: 40vh;
         width: 90%;
+        overflow-y: scroll;
         font-size: 0.7em;
     }
 `;
@@ -68,7 +70,7 @@ const paypalBox = css`
 export const Checkout = () => {
     const [cart, setCart] = useState(decodeCart());
     const [total, setTotal] = useState<number>(0);
-    const mobile = window.innerWidth < 800;
+    const mobile = window.innerWidth < 1000;
     console.log({
         env: process.env
     });

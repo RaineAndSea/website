@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FC, useEffect, useState } from 'react';
 import { BASE_QUERY } from '../../App';
 import { Cart } from '../../util/cookies/cart-cookies';
+import { MQ } from '../../util/mediaQueries';
 
 export const CheckoutSubtotal: FC<{ cart: Cart }> = ({ cart }) => {
     const mobile = window.innerHeight < 800;
@@ -30,5 +31,11 @@ export const CheckoutSubtotal: FC<{ cart: Cart }> = ({ cart }) => {
 };
 
 const base = css`
+    height: 15%;
     width: 90%;
+
+    ${MQ.mobile} {
+        height: unset;
+    }
+
 `;

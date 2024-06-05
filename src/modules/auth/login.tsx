@@ -5,7 +5,6 @@ import axios from 'axios';
 import { Form, Formik } from 'formik';
 import { FC, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
 import { BASE_QUERY } from '../../App';
 import { setCookie } from '../../util/cookies/cookies';
 import { MQ } from '../../util/mediaQueries';
@@ -98,8 +97,7 @@ export const Login: FC<{ isRegistering: boolean; setIsRegistering: (isRegisterin
     setIsRegistering
 }) => {
     const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
-    const navigate = useNavigate();
-    //comment
+
     const handleSubmit = (vals: LoginBody) => {
         const { email, password } = vals;
 
@@ -111,14 +109,15 @@ export const Login: FC<{ isRegistering: boolean; setIsRegistering: (isRegisterin
         toast
             .promise(promise, authToastMessages)
             .then(res => {
-                setCookie('logged-user', JSON.stringify(res.data.user));
-                navigate('/');
+                setCookie('csrfToken', res.data.token);
+                window.location.replace('/');
             })
             .catch(err => {
                 if (err.response && err.response.data) {
                     setErrorMessage(err.response.data.errorMessage);
                     return;
                 }
+
                 setErrorMessage('An unexpected error occured');
             });
     };

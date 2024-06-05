@@ -1,6 +1,7 @@
 // cookieUtils.js
 
-import { cookies, removeCookie } from './cookies';
+import { jwtDecode } from 'jwt-decode';
+import { cookies, getCookie, removeCookie } from './cookies';
 
 interface User {
     firstName: string;
@@ -17,5 +18,22 @@ export const decodeUser = () => {
 };
 
 export const logout = () => {
-    removeCookie('logged-user');
+    removeCookie('csrfToken');
 };
+
+interface DecodedToken {
+    email: string;
+    firstName: string;
+    iat: number;
+    exp: number;
+}
+export const decodeToken = () => {
+    const token = getCookie('csrfToken');
+    
+    try {
+        return jwtDecode(token) as DecodedToken;
+    } catch {
+        return {} as DecodedToken;
+    }
+    
+}

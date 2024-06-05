@@ -62,6 +62,7 @@ const top = css`
     ${MQ.mobile} {
         width: 100%;
         flex-wrap: wrap;
+        height: unset;
 
         .image-gallery,
         .addToCartSection {

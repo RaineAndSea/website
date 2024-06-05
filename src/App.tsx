@@ -9,15 +9,14 @@ import { ProductDetails } from './modules/productDetails/addToCart/productDetail
 import { Products } from './modules/products/products';
 import { Notifications } from './modules/toast/toast';
 
-export const BASE_QUERY = 'https://raine-server.vercel.app';
-// export const BASE_QUERY = 'http://localhost:5050';
+// export const BASE_QUERY = 'https://raine-server.vercel.app';
+export const BASE_QUERY = 'http://192.168.0.15:5050';
 function App() {
     document.title = 'Raine & Sea';
     return (
         <div className='App'>
             <Toaster />
             <Notifications />
-            ``
             <BrowserRouter>
                 <Header />
                 <Routes>

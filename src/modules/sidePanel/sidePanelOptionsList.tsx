@@ -1,12 +1,17 @@
 import { css } from '@emotion/css';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { decodeUser } from '../../util/cookies/auth-cookies';
+import { BASE_QUERY } from '../../App';
+import { decodeToken } from '../../util/cookies/auth-cookies';
+import { removeCookie } from '../../util/cookies/cookies';
 import { MQ } from '../../util/mediaQueries';
+import { secureAxios } from '../../util/secureAxios';
 import { PageSection } from './sidePanelPageSection';
 import { UserSection } from './sidePanelUserSection';
 
 export const SidePanelOptionsList: React.FC<{ closeSidePanel: () => void }> = ({ closeSidePanel }) => {
-    const user = decodeUser();
+    const [user, setUser] = useState();
+
     const nav = useNavigate();
     const navigate = (href: string) => {
         nav(href);
@@ -14,7 +19,26 @@ export const SidePanelOptionsList: React.FC<{ closeSidePanel: () => void }> = ({
             closeSidePanel();
         }
     };
-    const isMobile = window.innerWidth <= 800;
+    const isMobile = window.innerWidth <= 1000;
+
+    useEffect(() => {
+        const decoded = decodeToken();
+
+        if(!decoded.email) {
+            removeCookie('csrfToken');
+            setUser(undefined);
+            return;
+        }
+
+        secureAxios.get(`${BASE_QUERY}/users/email/${decoded.email}`)
+            .then((res) => {
+                console.log(res.data)
+                setUser(res.data.user);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }, [])
 
     return (
         <div className={base}>

@@ -120,9 +120,10 @@ const base = css`
         flex-grow: 0;
         min-width: 150px;
         max-width: 50%;
-        width: 47%;
+        width: 48%;
         height: 250px;
         padding: 0.7%;
+        box-shadow: none;
     }
 `;
 
@@ -131,7 +132,7 @@ export const addToCartWithConfirmation = (id: string) => {
     addToCart(id);
 };
 export const ProductCard: FC<{ product: Product }> = ({ product }) => {
-    const mobile = window.innerWidth < 800;
+    const mobile = window.innerWidth < 1000;
     const navigate = useNavigate();
 
     return (

@@ -24,7 +24,7 @@ const extractCrystals = (products: Product[]) => {
 };
 
 export const ProductsFilter: FC<ProductsFilterProps> = ({ products, filterUpdateFn, filter }) => {
-    const mobile = window.innerWidth < 800;
+    const mobile = window.innerWidth < 1000;
 
     const Element = mobile ? ProductsFilterMobile : ProductsFilterDesktop;
     return <Element products={products} filterUpdateFn={filterUpdateFn} filter={filter} />;

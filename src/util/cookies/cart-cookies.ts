@@ -24,6 +24,7 @@ export interface Product {
     category: string;
     crystals: string[];
     stock: number;
+    personalizationHint?: string;
     variants: Variant[];
 }
 export interface Cart {

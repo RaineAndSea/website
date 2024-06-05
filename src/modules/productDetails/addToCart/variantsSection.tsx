@@ -34,11 +34,13 @@ export const VariantsSection: FC<{
             <section className='personalization'>
                 <label htmlFor='personalization'>Personalization</label>
                 <textarea />
+                <p className='personalizationHint'>{product.personalizationHint || defaultPersonalizationHint}</p>
             </section>
         </section>
     );
 };
 
+const defaultPersonalizationHint = 'I will do my best to accommodate any special requests!';
 const variantsSection = css`
     display: flex;
     gap: 1rem;
@@ -110,6 +112,12 @@ const variantsSection = css`
 
         label {
             margin-left: 0.5rem;
+        }
+
+        .personalizationHint {
+            margin: 0 0 0 0.5rem;
+            font-size: .9rem;
+            color: grey
         }
     }
 `;

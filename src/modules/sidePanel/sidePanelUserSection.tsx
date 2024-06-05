@@ -16,7 +16,7 @@ export const UserSection: React.FC<UserSectionProps> = ({ user, navigate }) => {
     if (!user) {
         user = { firstName: 'stranger' };
     }
-
+    
     return (
         <>
             <section style={{ marginTop: '20px', display: 'flex' }}>
@@ -53,7 +53,7 @@ export const UserSection: React.FC<UserSectionProps> = ({ user, navigate }) => {
                     className={`${sidePanelUserOption} side-panel-option-selectable`}
                     onClick={() => {
                         logout();
-                        navigate('/auth');
+                        window.location.replace('/auth');
                     }}>
                     <p className='label'>Logout</p>
                     <img width={'16px'} alt='arrow' src={logoutIcon} />

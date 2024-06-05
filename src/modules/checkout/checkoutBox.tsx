@@ -8,10 +8,10 @@ interface CheckoutBoxProps {
     cartUpdateFn: (cart: Cart) => void;
 }
 export const CheckoutBox: FC<CheckoutBoxProps> = ({ cart, cartUpdateFn }) => {
-    const mobile = window.innerWidth < 800;
+    const mobile = window.innerWidth < 1000;
     return (
         <>
-            <section style={{ width: '100%', maxHeight: '90%', overflowY: 'scroll' }}>
+            <section style={{ width: '100%', height:'100%', overflowY: 'scroll' }}>
                 {Object.keys(cart.products).map((id, key) => (
                     <CheckoutCartItem
                         key={key}
