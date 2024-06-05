@@ -143,6 +143,9 @@ const base = css`
         transform: translateX(-50%);
     }
 
+    .image-gallery-play-button, .image-gallery-fullscreen-button {
+        z-index: 1 !important;
+    }
     .custom-controls-bottom {
         position: absolute;
         bottom: -2.2rem;

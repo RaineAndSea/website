@@ -49,6 +49,10 @@ const checkoutBox = css`
         overflow-y: scroll;
         font-size: 0.7em;
     }
+
+    ${MQ.smallMobile} {
+        margin-top: 5%;
+    }
 `;
 
 const paypalBox = css`

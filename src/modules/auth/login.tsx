@@ -1,9 +1,7 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/anchor-has-content */
 import { css } from '@emotion/css';
 import axios from 'axios';
 import { Form, Formik } from 'formik';
-import { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 import toast from 'react-hot-toast';
 import { BASE_QUERY } from '../../App';
 import { setCookie } from '../../util/cookies/cookies';
@@ -15,6 +13,7 @@ export const authToastMessages = {
     error: 'Oops..',
     loading: 'Loading'
 };
+
 export const regLoginHyperlink = css`
     font-size: 0.9em;
     margin-top: 5%;
@@ -48,7 +47,8 @@ export const regLoginSubmitButton = css`
         filter: brightness(1.02);
     }
 `;
-const base = css`
+
+export const base = css`
     display: flex;
     width: 100%;
     height: 78.7%;
@@ -57,10 +57,15 @@ const base = css`
     align-items: center;
 
     ${MQ.mobile} {
-        margin-top: 20vh;
-        height: 80%;
+        margin-top: 0vh;
+        height: 100%;
+    }
+
+    ${MQ.smallMobile} {
+        margin-top: 8vh;
     }
 `;
+
 const loginForm = css`
     border-radius: 12px;
     width: 30%;
@@ -70,9 +75,7 @@ const loginForm = css`
     padding: 3% 0 2% 0;
     align-items: center;
     background-color: white;
-    box-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.1),
-        0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
 
     ${MQ.mobile} {
         width: 100%;
@@ -93,13 +96,14 @@ type LoginBody = {
     email: string;
     password: string;
 };
+
 export const Login: FC<{ isRegistering: boolean; setIsRegistering: (isRegistering: boolean) => void }> = ({
     isRegistering,
     setIsRegistering
 }) => {
     const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
 
-    const handleSubmit = (vals: LoginBody) => {
+    const handleSubmit = useCallback((vals: LoginBody) => {
         const { email, password } = vals;
 
         const promise = axios.post(`${BASE_QUERY}/users/login`, {
@@ -119,9 +123,13 @@ export const Login: FC<{ isRegistering: boolean; setIsRegistering: (isRegisterin
                     return;
                 }
 
-                setErrorMessage('An unexpected error occured');
+                setErrorMessage('An unexpected error occurred');
             });
-    };
+    }, []);
+
+    const toggleRegistering = useCallback(() => {
+        setIsRegistering(!isRegistering);
+    }, [isRegistering, setIsRegistering]);
 
     return (
         <div className={base}>
@@ -134,7 +142,7 @@ export const Login: FC<{ isRegistering: boolean; setIsRegistering: (isRegisterin
                         <button className={regLoginSubmitButton} type='submit'>
                             Login
                         </button>
-                        <p className={regLoginHyperlink} onClick={() => setIsRegistering(!isRegistering)}>
+                        <p className={regLoginHyperlink} onClick={toggleRegistering}>
                             Need an account? <span className='decorated'>Register here</span>
                         </p>
                     </Form>
