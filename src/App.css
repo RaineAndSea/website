@@ -1,13 +1,8 @@
 
-html, body {
-  max-height: 100vh;
-  overflow-y: hidden;
-  overflow-x: hidden;
-}
 .App {
+  height: 100vh;
   background-color: rgb(240, 242, 245);
   text-align: center;
-  padding-bottom: 20vh;
   overflow-y: hidden;
   overflow-x: hidden;
 }

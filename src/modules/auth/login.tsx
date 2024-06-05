@@ -57,6 +57,7 @@ const base = css`
     align-items: center;
 
     ${MQ.mobile} {
+        margin-top: 20vh;
         height: 80%;
     }
 `;

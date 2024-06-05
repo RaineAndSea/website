@@ -44,7 +44,7 @@ const slideInAnimation = keyframes`
 const sidePanel = css`
     top: 0px;
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     overflow-y: scroll;
     position: absolute;
     display: flex;
